@@ -5,8 +5,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 class AccessClassLoader extends ClassLoader {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	static private final ArrayList<AccessClassLoader> accessClassLoaders = new ArrayList();
 
+	@SuppressWarnings("rawtypes")
 	static AccessClassLoader get (Class type) {
 		ClassLoader parent = type.getClassLoader();
 		synchronized (accessClassLoaders) {
@@ -33,6 +35,7 @@ class AccessClassLoader extends ClassLoader {
 		return super.loadClass(name, resolve);
 	}
 
+	@SuppressWarnings("rawtypes")
 	Class<?> defineClass (String name, byte[] bytes) throws ClassFormatError {
 		try {
 			// Attempt to load the access class in the same loader, which makes protected and default access members accessible.

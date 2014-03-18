@@ -1,41 +1,57 @@
 package com.coffeebean.mobile.rest.server.mvc.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
 
-@XmlRootElement(name="employee")
-public class Employee {
+public class Employee extends PrimaryId {
+	public String name;
+	public long depart;
+	public String email;
+	public Date joinDate;
 
-	private long id;
-	private String name;
-	private String email;
-	
-	public Employee() {}
-	
+	public Employee() {
+	}
+
 	public Employee(long id, String name, String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public long getDepart() {
+		return depart;
+	}
+
+	public void setDepart(long depart) {
+		this.depart = depart;
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", depart=" + depart + ", email="
+				+ email + ", joinDate=" + joinDate + ", id=" + id + "]";
+	}
 }

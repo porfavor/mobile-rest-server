@@ -71,6 +71,7 @@ public abstract class FieldAccess {
 
 	abstract public float getFloat (Object instance, int fieldIndex);
 
+	@SuppressWarnings("rawtypes")
 	static public FieldAccess get (Class type) {
 		AccessClassLoader loader = AccessClassLoader.get(type);
 

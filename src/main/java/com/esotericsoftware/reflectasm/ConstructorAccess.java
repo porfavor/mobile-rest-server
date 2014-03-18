@@ -9,6 +9,7 @@ import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.*;
 
 public abstract class ConstructorAccess<T> {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	static public <T> ConstructorAccess<T> get (Class<T> type) {
 		try {
 			type.getConstructor((Class[])null);

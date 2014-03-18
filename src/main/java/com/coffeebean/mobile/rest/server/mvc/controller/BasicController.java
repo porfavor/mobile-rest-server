@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.coffeebean.mobile.rest.server.mvc.model.Employee;
-import com.coffeebean.mobile.rest.server.mvc.model.EmployeeList;
 
 @Controller
 @RequestMapping("/{uid}")
@@ -39,8 +38,7 @@ public class BasicController {
 		e2.setName("Jones");
 		e2.setEmail("Jones@199,com");
 		employees.add(e1);
-		
-		EmployeeList list = new EmployeeList(employees);
-		return new ModelAndView("employees", "employees", list);
+
+		return new ModelAndView("employees", "employees", employees);
 	}
 }

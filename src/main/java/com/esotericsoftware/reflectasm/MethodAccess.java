@@ -16,6 +16,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public abstract class MethodAccess {
 	private String[] methodNames;
+	@SuppressWarnings("rawtypes")
 	private Class[][] parameterTypes;
 
 	abstract public Object invoke (Object object, int methodIndex, Object... args);
@@ -32,6 +33,7 @@ public abstract class MethodAccess {
 		throw new IllegalArgumentException("Unable to find public method: " + methodName);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public int getIndex (String methodName, Class... paramTypes) {
 		for (int i = 0, n = methodNames.length; i < n; i++)
 			if (methodNames[i].equals(methodName) && Arrays.equals(paramTypes, parameterTypes[i])) return i;
@@ -42,10 +44,12 @@ public abstract class MethodAccess {
 		return methodNames;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Class[][] getParameterTypes () {
 		return parameterTypes;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	static public MethodAccess get (Class type) {
 		AccessClassLoader loader = AccessClassLoader.get(type);
 
