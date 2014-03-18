@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<contextName>project</contextName>
+	<property name="logback.logs.path" value="/usr/local/shop/logs" />
+	<property name="logback.project.name" value="shop" />
+	<timestamp key="byDay" datePattern="yyyyMMdd" />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender" target="System.error">
+		<encoder charset="UTF-8">
+			<pattern>%n[%level] - %date - %logger#%line -- %msg</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${logback.logs.path}/${logback.project.name}_%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>7</MaxHistory>
+		</rollingPolicy>
+
+		<encoder charset="UTF-8">
+			<pattern>%n[%level] - %date - %logger#%line -- %msg</pattern>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+</configuration>
