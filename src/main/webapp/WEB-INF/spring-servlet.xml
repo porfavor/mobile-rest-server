@@ -120,7 +120,7 @@
                 <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />  
   
                 <!-- XML View -->  
-                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">  
+                <!-- <bean class="org.springframework.web.servlet.view.xml.MarshallingView">  
                     <constructor-arg>  
                         <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">  
                             <property name="packagesToScan">  
@@ -130,7 +130,15 @@
                             </property>  
                         </bean>  
                     </constructor-arg>  
-                </bean>  
+                </bean>   -->
+                
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+			        <property name="marshaller">
+			          <bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+			            <property name="autodetectAnnotations" value="true" />
+			            </bean>
+			        </property>
+			    </bean>
             </list>  
         </property>  
     </bean>  

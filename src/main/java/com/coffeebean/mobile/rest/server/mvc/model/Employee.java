@@ -2,6 +2,9 @@ package com.coffeebean.mobile.rest.server.mvc.model;
 
 import java.util.Date;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("Employee")
 public class Employee extends PrimaryId {
 	public String name;
 	public long depart;
