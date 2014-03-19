@@ -24,13 +24,14 @@
 					http://www.springframework.org/schema/task
 					http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 
-	<context:component-scan base-package="com.coffeebean.mobile.rest.server.mvc.controller" />
+	<context:component-scan base-package="com.coffeebean.mobile.rest.server.mvc" />
 	
 	<context:component-scan base-package="com.coffeebean.mobile.rest.server.core.ext">
 	    <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 	
-<!-- 	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" validator="validator" conversion-service="conversionService">
+	<!--
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" validator="validator" conversion-service="conversionService">
 	    <mvc:message-converters>
 	        <bean class="com.coffeebean.mobile.rest.server.core.ext.FastJsonHttpMessageConverterEx">
 	          	<property name="features"> 
@@ -62,20 +63,20 @@
             </bean>
         </property>
     </bean>
- -->	
-<!-- 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 	    <property name="mediaTypes" >
 	        <value>
 	            json=application/json
 	            xml=application/xml
 	        </value>
 	    </property>
-	</bean> -->
+	</bean>
 	
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames" value="classpath:i18n/ValidationMessages" />
         <property name="defaultEncoding" value="UTF-8" />
-    </bean>
+    </bean> -->
 	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 	    <property name="validationMessageSource" ref="messageSource"/>
@@ -115,7 +116,9 @@
                     </bean>  
                 </constructor-arg>  
             </bean>  
-        </property>  
+        </property>
+        
+       <!-- <property name="contentNegotiationManager" ref="contentNegotiationManager" /> --> 
   
         <property name="defaultViews">  
             <list>  
