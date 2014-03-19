@@ -32,21 +32,21 @@ public class BasicController {
 	//private static final String XML_VIEW_NAME = "employees";
 	
 	@ResponseBody
-	@RequestMapping(value="/hello.json")
+	@RequestMapping(value="/hello.action")
 	public String depositTracker(
 			HttpServletRequest request){
 		return "Hello";
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/employee/{id}.json")
+	@RequestMapping(method=RequestMethod.GET, value="/employee/{id}.action")
 	public ModelAndView getEmployee(@PathVariable String id) {
 		Employee domain = new Employee();
 		domain.setId(Long.parseLong(id));
 		Employee fdbEmployee = basicService.selectDomain(domain, Employee.class, "id");
-		return new ModelAndView("employees", "object", fdbEmployee);
+		return new ModelAndView("employee", "employee", fdbEmployee);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/employee/{id}.json")
+	@RequestMapping(method=RequestMethod.PUT, value="/employee/{id}.action")
 	public ModelAndView updateEmployee(
 			HttpServletRequest request,
 			@Valid Employee domain) {
@@ -54,7 +54,7 @@ public class BasicController {
 		return new ModelAndView("employees", "object", domain);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/employee.json")
+	@RequestMapping(method=RequestMethod.POST, value="/employee.action")
 	public ModelAndView addEmployee(
 			HttpServletRequest request,
 			@Valid Employee domain) {
@@ -70,7 +70,7 @@ public class BasicController {
 //		return new ModelAndView(XML_VIEW_NAME, "employees", list);
 //	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/employees.json")
+	@RequestMapping(method=RequestMethod.GET, value="/employees.action")
 	public ModelAndView getEmployees() {
 		List<Employee> employees = new ArrayList<Employee>();
 		
@@ -84,7 +84,7 @@ public class BasicController {
 		e2.setId(2);
 		e2.setName("Jones");
 		e2.setEmail("Jones@199,com");
-		employees.add(e1);
+		employees.add(e2);
 
 		return new ModelAndView("employees", "employees", employees);
 	}
